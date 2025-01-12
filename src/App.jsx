@@ -16,7 +16,6 @@ export const goodsFromServer = [
 ];
 
 export const App = () => {
-  const goodsCopy = [...goodsFromServer];
   const [sortingCriterion, setSortingCriterion] = useState('');
   const [isReversed, setIsReversed] = useState(false);
 
@@ -25,10 +24,10 @@ export const App = () => {
     setIsReversed(false);
   };
 
-  let displayedGoods = goodsCopy;
+  let displayedGoods = [...goodsFromServer];
 
   if (sortingCriterion) {
-    displayedGoods = goodsCopy.sort((item1, item2) => {
+    displayedGoods = [...goodsFromServer].sort((item1, item2) => {
       switch (sortingCriterion) {
         case 'alphabetically':
           return item1.localeCompare(item2);
